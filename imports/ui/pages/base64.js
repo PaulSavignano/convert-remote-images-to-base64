@@ -17,7 +17,10 @@ export class Base64 extends Component {
     base64String.value = ''
     component.setState({ base64String: null })
     Meteor.call('getImageFromUrlAsBase64', url.value, (error, result) => {
-      if (error) Bert.alert(error.reason, 'danger')
+      if (error) {
+        console.log(error)
+        Bert.alert(error.reason, 'danger')
+      }
       if (result) {
         url.value = ''
         base64String.value = result
